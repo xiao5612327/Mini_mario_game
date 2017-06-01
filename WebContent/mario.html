@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Mini_Mario</title>
+<link href="./mario.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript">
+	function Mario(){
+		this.x;
+		this.y;
+		this.move=function(direction){
+			var position = document.getElementById("mar");
+		
+			switch(direction){
+				//move up
+				case 0:			
+				 	var top = parseInt(position.style.top.substr(0, position.style.top.length-2)) -40;
+				 	if(top < 0){
+				 		window.alert("you out of game area!");
+				 		break;
+				 	}
+					position.style.top = top + "px";
+					break;
+				//move right
+				case 1:
+					var left = parseInt(position.style.left.substr(0, position.style.left.length-2))  +40;
+					if(left > 850){
+						window.alert("you out of game area!");
+				 		break;
+					}
+					position.style.left = left + "px";
+					break;
+				//move down
+				case 2:
+					var top = parseInt(position.style.top.substr(0, position.style.top.length-2)) + 40;
+					if(top > 350){
+						window.alert("you out of game area!");
+				 		break;	
+				 	}	
+					position.style.top = top + "px";
+					break;
+				//move left
+				case 3:
+					var left = parseInt(position.style.left.substr(0, position.style.left.length-2)) - 40;
+					if(left < 0){
+						window.alert("you out of game area!");
+				 		break;
+				 	}
+					position.style.left = left + "px";
+					break;
+			}
+		}
+	}
+	var mario = new Mario();
+	
+	
+</script>
+</head>
+<body>
+<div class="game">
+	
+	<img style="width:50px; position:absolute; left:10px; top:10px" id="mar" alt="mario" src="images/mario.jpg" />
+	<img class="mushroom" alt="mushroom" src="images/mushroom.png"/>
+</div>
+
+<div>
+	<table class="control">
+		<tr >
+		<td colspan="3">controller</td>
+		</tr>
+		<tr>
+		<td></td><td><input type="button" value="up" onclick=mario.move(0)></td><td></td>
+		</tr>
+		<tr>
+		<td><input type="button" value="left" onclick=mario.move(3)></td>
+		<td></td>
+		<td><input type="button" value="right" onclick=mario.move(1)></td>
+		</tr>
+		<tr>
+		<td></td><td><input type="button" value="down" onclick=mario.move(2)></td><td></td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>
